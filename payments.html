@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payments – DMWIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{overflow-x:hidden;background:#eef7ff;color:#003366;}
+
+/* Animated Professional Background */
+#bg{
+position:fixed;inset:0;z-index:-3;
+background:linear-gradient(180deg,#eef7ff 0%,#d5ecff 40%,#bfe2ff 70%,#a6d8ff 100%);
+animation:bgMove 10s infinite alternate ease-in-out;
+}
+@keyframes bgMove{
+0%{transform:scale(1) translateY(0);}
+100%{transform:scale(1.25) translateY(40px);}
+}
+
+/* Menu Button */
+.menu-btn{
+position:fixed;
+top:20px;right:20px;
+font-size:32px;
+cursor:pointer;
+color:#0066cc;
+z-index:30;
+transition:.3s;
+}
+.menu-btn:hover{color:#004c99;}
+
+.menu-box{
+position:fixed;
+top:0;right:-250px;
+width:230px;height:100vh;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(8px);
+border-left:2px solid #cce6ff;
+padding:40px 20px;
+transition:.4s;z-index:25;
+}
+.menu-box.open{right:0;}
+
+.menu-box a{
+display:block;margin:12px 0;
+padding:10px 15px;
+border-radius:10px;
+font-weight:600;
+text-decoration:none;
+color:#004080;
+transition:.3s;
+}
+.menu-box a:hover{background:#cfe8ff;}
+
+/* MAIN CONTENT */
+.container{
+padding:140px 10% 60px;
+}
+
+/* Heading */
+h1{
+font-size:44px;margin-bottom:20px;
+background:linear-gradient(90deg,#007bff,#00a8ff);
+-webkit-background-clip:text;color:transparent;
+}
+
+/* Text */
+p,li{
+font-size:17px;
+line-height:1.7;
+color:#003366;
+}
+
+/* Back Button */
+.btn{
+display:inline-block;margin-top:30px;
+padding:12px 26px;
+background:#007bff;color:#fff;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:.25s;
+}
+.btn:hover{
+background:#005fcc;
+transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div id="bg"></div>
+
+<!-- MENU BUTTON -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- SLIDE MENU -->
+<div class="menu-box" id="menuBox">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="games.html">Games</a>
+  <a href="how-to-play.html">How to Play</a>
+  <a href="bonuses.html">Bonuses</a>
+  <a href="payments.html">Payments</a>
+  <a href="hack.html">Hack Service</a>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+<h1>Payment Methods & Instant Withdrawals</h1>
+
+<p>
+DMWIN offers fast, secure, and reliable payment options so players can enjoy
+a smooth gaming experience without delays.
+</p>
+
+<br>
+
+<p><b>Supported Payment Methods:</b></p>
+
+<ul>
+  <li><b>UPI</b> – Supports Google Pay, PhonePe, Paytm</li>
+  <li><b>Net Banking</b> – Direct and safe transfers</li>
+  <li><b>USDT (Crypto)</b> – Fast and global payment option</li>
+</ul>
+
+<br>
+
+<p><b>Why Choose DMWIN Payments?</b></p>
+
+<ul>
+  <li>Instant deposits</li>
+  <li>Fast & secure withdrawals</li>
+  <li>Zero hassle payment process</li>
+  <li>Trusted Indian payment support</li>
+</ul>
+
+<br>
+
+<p>
+Withdrawals are processed quickly ensuring players enjoy their winnings
+without unnecessary waiting.
+</p>
+
+<a class="btn" href="index.html">Back to Home</a>
+
+</div>
+
+<script>
+function toggleMenu(){
+document.getElementById("menuBox").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
