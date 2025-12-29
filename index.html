@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DMWIN – Play Smart. Win Smart.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+html{scroll-behavior:smooth}
+body{background:#050814;color:#fff;overflow-x:hidden;cursor:none}
+
+/* Loader */
+#loader{
+position:fixed;inset:0;background:#000;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+z-index:9999
+}
+.loader-ring{
+width:80px;height:80px;border:6px solid #00ffcc33;
+border-top:6px solid #00ffcc;border-radius:50%;
+animation:spin 1s linear infinite
+}
+.loader-text{margin-top:15px;letter-spacing:4px;color:#00ffcc;animation:pulse 1.5s infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* Cursor */
+.cursor{
+width:18px;height:18px;border:2px solid #00ffcc;
+border-radius:50%;position:fixed;pointer-events:none;z-index:10000
+}
+
+/* Navbar */
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 8%;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(14px);
+z-index:1000
+}
+nav h2{color:#00ffcc}
+nav a{
+color:#fff;text-decoration:none;margin-left:22px;font-size:14px;
+position:relative
+}
+nav a:after{
+content:"";position:absolute;left:0;bottom:-6px;
+width:0;height:2px;background:#00ffcc;transition:.3s
+}
+nav a:hover:after{width:100%}
+
+/* Sections */
+section{padding:110px 10%}
+h1,h2{text-align:center}
+p{color:#cbd6ff;line-height:1.7}
+
+/* Hero */
+.hero{
+height:100vh;display:flex;align-items:center;
+justify-content:center;text-align:center;position:relative
+}
+#bgCanvas{position:absolute;inset:0}
+.hero-content{z-index:2}
+.hero h1{
+font-size:56px;
+background:linear-gradient(90deg,#00f0ff,#00ff88);
+-webkit-background-clip:text;color:transparent
+}
+
+/* Buttons */
+.btn{
+padding:14px 36px;border-radius:50px;border:none;
+background:linear-gradient(90deg,#00f0ff,#00ff88);
+color:#fff;cursor:pointer;margin:10px;
+box-shadow:0 0 25px #00ffcc;transition:.3s
+}
+.btn:hover{transform:translateY(-6px) scale(1.05)}
+
+/* Glass */
+.glass{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border-radius:22px;padding:35px;
+border:1px solid rgba(255,255,255,.15);
+transition:.4s
+}
+.glass:hover{transform:translateY(-10px);box-shadow:0 0 35px #00f0ff66}
+
+/* Grid */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;margin-top:40px
+}
+
+/* Counter */
+.counter{font-size:40px;font-weight:700;color:#00ffcc}
+
+/* FAQ */
+.faq-q{cursor:pointer;font-weight:600}
+.faq-a{max-height:0;overflow:hidden;transition:.4s;margin-top:10px}
+
+/* CTA */
+.contact-cta{
+background:#ff7a73;color:#111;
+padding:90px 10%;text-align:center
+}
+.contact-cta h2{font-size:34px}
+.contact-cta p{margin:15px 0 25px;color:#222}
+.contact-btn{
+padding:14px 34px;border-radius:40px;
+border:2px solid #111;background:transparent;
+cursor:pointer;font-weight:600;transition:.3s
+}
+.contact-btn:hover{background:#111;color:#fff}
+
+/* Support Strip */
+.support-strip{
+background:#4a56f0;
+padding:45px 10%;
+text-align:center;font-size:18px
+}
+
+/* Footer */
+.footer{
+background:#fff;color:#222;padding:70px 10%
+}
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px
+}
+.footer h3{margin-bottom:15px}
+.footer a{
+display:block;color:#555;text-decoration:none;
+margin-bottom:8px;font-size:14px
+}
+.footer a:hover{color:#000}
+.footer-bottom{
+text-align:center;margin-top:40px;
+font-size:13px;color:#777
+}
+
+/* Cookie */
+.cookie-box{
+position:fixed;bottom:20px;left:20px;right:20px;
+background:#fff;color:#111;padding:25px;
+border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.3);
+z-index:99999;display:none
+}
+.cookie-box h4{margin-bottom:8px}
+.cookie-actions{margin-top:15px}
+.cookie-actions button{
+padding:10px 20px;margin-right:10px;
+border-radius:8px;border:none;cursor:pointer
+}
+.accept{background:#2563eb;color:#fff}
+.customize{background:#e5e7eb}
+
+/* Responsive */
+@media(max-width:768px){
+.hero h1{font-size:38px}
+nav{padding:15px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="loader">
+<div class="loader-ring"></div>
+<div class="loader-text">LOADING DMWIN</div>
+</div>
+
+<div class="cursor"></div>
+
+<!-- Navbar -->
+<nav>
+<h2>DMWIN</h2>
+<div>
+<a href="#about">About</a>
+<a href="#stats">Stats</a>
+<a href="#deposit">Deposit</a>
+<a href="#withdraw">Withdraw</a>
+<a href="#hack">Get Hack</a>
+<a href="#faq">FAQ</a>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<canvas id="bgCanvas"></canvas>
+<div class="hero-content" data-aos="zoom-in">
+<h1>DMWIN – Play Smart. Win Smart.</h1>
+<p>Premium Online Gaming Platform</p>
+
+<a href="https://www.dmwin15.com/#/register?invitationCode=583522131503" target="_blank">
+<button class="btn sound">Register Now</button>
+</a>
+
+<a href="https://t.me/dmwinpredictionguru" target="_blank">
+<button class="btn sound">Join Telegram</button>
+</a>
+</div>
+</section>
+
+<!-- About -->
+<section id="about" data-aos="fade-up">
+<h2>About DMWIN</h2>
+<div class="glass">
+<p>
+DMWIN is a modern gaming platform focused on speed, security
+and user-friendly experience with instant withdrawals.
+</p>
+</div>
+</section>
+
+<!-- Stats -->
+<section id="stats" data-aos="fade-up">
+<h2>Platform Stats</h2>
+<div class="grid">
+<div class="glass"><div class="counter" data-target="50000">0</div><p>Active Users</p></div>
+<div class="glass"><div class="counter" data-target="24">0</div><p>7 Withdrawals</p></div>
+<div class="glass"><div class="counter" data-target="99">0</div><p>% Success Rate</p></div>
+</div>
+</section>
+
+<!-- Deposit -->
+<section id="deposit" data-aos="fade-up">
+<h2>How to Deposit</h2>
+<div class="glass">
+<ol>
+<li>Login / Register</li>
+<li>Wallet → Deposit</li>
+<li>Select payment method</li>
+<li>Enter amount</li>
+<li>Instant credit</li>
+</ol>
+</div>
+</section>
+
+<!-- Withdraw -->
+<section id="withdraw" data-aos="fade-up">
+<h2>How to Withdraw</h2>
+<div class="glass">
+<ol>
+<li>Wallet → Withdraw</li>
+<li>Enter amount</li>
+<li>Select Bank / UPI</li>
+<li>Receive in minutes</li>
+</ol>
+</div>
+</section>
+
+<!-- Get Hack -->
+<section id="hack" data-aos="fade-up">
+<h2>Get Hack – Simple Process</h2>
+<div class="glass">
+<p>
+Our prediction support system is designed to help users
+play with better strategy and understanding.
+</p>
+
+<ol>
+<li>Register on DMWIN</li>
+<li>Deposit minimum ₹500</li>
+<li>Take deposit screenshot</li>
+<li>Send it on Telegram</li>
+</ol>
+
+<p style="color:#00ffcc;margin-top:10px">
+Note: This system provides guidance & analysis support,
+not guaranteed outcomes.
+</p>
+
+<div style="text-align:center;margin-top:20px">
+<a href="https://t.me/dmwindaisey" target="_blank">
+<button class="btn sound">Send Screenshot on Telegram</button>
+</a>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" data-aos="fade-up">
+<h2>FAQ</h2>
+
+<div class="glass">
+<div class="faq-q">Is DMWIN safe?</div>
+<div class="faq-a">Yes, it uses secure payment systems.</div>
+</div>
+
+<div class="glass">
+<div class="faq-q">Withdrawal time?</div>
+<div class="faq-a">Most withdrawals are instant, 24/7.</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="contact-cta">
+<h2>Still have questions?</h2>
+<p>Can’t find the answer you’re looking for? Please chat with our team.</p>
+<a href="https://t.me/dmwindaisey" target="_blank">
+<button class="contact-btn sound">Get in touch →</button>
+</a>
+</section>
+
+<!-- Support -->
+<section class="support-strip">
+With love and dedication from 💛<br><b>Support Team</b>
+</section>
+
+<!-- Footer -->
+<section class="footer">
+<div class="footer-grid">
+
+<div>
+<h3>Company</h3>
+<a href="#about">About Us</a>
+<a href="#faq">FAQ</a>
+<a href="https://t.me/dmwindaisey" target="_blank">Contact Us</a>
+</div>
+
+<div>
+<h3>Platform</h3>
+<a href="#deposit">How to Deposit</a>
+<a href="#withdraw">How to Withdraw</a>
+<a href="#hack">Get Hack</a>
+</div>
+
+<div>
+<h3>Support</h3>
+<a href="https://t.me/dmwindaisey" target="_blank">Telegram Support</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2025 DMWIN | Play Responsibly
+</div>
+</section>
+
+<!-- Cookie -->
+<div class="cookie-box" id="cookieBox">
+<h4>We value your privacy</h4>
+<p>
+We use cookies to enhance your browsing experience
+and analyze traffic. By clicking "Accept All",
+you consent to our use of cookies.
+</p>
+<div class="cookie-actions">
+<button class="accept" onclick="acceptCookies()">Accept All</button>
+<button class="customize" onclick="acceptCookies()">Customize</button>
+</div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+
+<script>
+AOS.init({duration:1200,once:true});
+window.onload=()=>{
+document.getElementById("loader").style.display="none";
+if(!localStorage.getItem("cookieAccepted")){
+document.getElementById("cookieBox").style.display="block";
+}
+};
+
+/* Cookie */
+function acceptCookies(){
+localStorage.setItem("cookieAccepted","yes");
+document.getElementById("cookieBox").style.display="none";
+}
+
+/* Cursor */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+/* Sound */
+const audio=new Audio("https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3");
+document.querySelectorAll(".sound").forEach(b=>b.onclick=()=>audio.play());
+
+/* FAQ */
+document.querySelectorAll(".faq-q").forEach(q=>{
+q.onclick=()=>{
+const a=q.nextElementSibling;
+a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+"px";
+};
+});
+
+/* Counter */
+document.querySelectorAll(".counter").forEach(c=>{
+const update=()=>{
+const t=+c.dataset.target;
+const cur=+c.innerText;
+const inc=Math.ceil(t/80);
+if(cur<t){c.innerText=cur+inc;setTimeout(update,30);}
+else c.innerText=t;
+};
+update();
+});
+
+/* WebGL Particles */
+const canvas=document.getElementById("bgCanvas");
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true});
+renderer.setSize(innerWidth,innerHeight);
+camera.position.z=5;
+
+const particles=[];
+const geo=new THREE.SphereGeometry(.03,8,8);
+for(let i=0;i<200;i++){
+const mat=new THREE.MeshBasicMaterial({color:0x00ffcc});
+const p=new THREE.Mesh(geo,mat);
+p.position.set((Math.random()-.5)*10,(Math.random()-.5)*10,(Math.random()-.5)*10);
+scene.add(p);particles.push(p);
+}
+function animate(){
+requestAnimationFrame(animate);
+particles.forEach(p=>{p.rotation.x+=.01;p.rotation.y+=.01});
+renderer.render(scene,camera);
+}
+animate();
+</script>
+
+</body>
+  </html>
