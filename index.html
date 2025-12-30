@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DMWIN – Intelligent Gaming Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{overflow-x:hidden;color:#003366;background:#eef7ff;}
+
+/* ======= Professional Animated Background ======= */
+#bg{
+position:fixed;
+inset:0;
+background:linear-gradient(180deg,#eef7ff 0%,#d5ecff 40%,#bfe2ff 70%,#a6d8ff 100%);
+animation:bgMove 10s infinite alternate ease-in-out;
+z-index:-3;
+}
+@keyframes bgMove{
+0%{transform:scale(1) translateY(0);}
+100%{transform:scale(1.25) translateY(40px);}
+}
+
+/* ======= MENU BUTTON ======= */
+.menu-btn{
+position:fixed;top:20px;right:20px;
+font-size:32px;color:#0066cc;
+cursor:pointer;z-index:20;transition:.3s;
+}
+.menu-btn:hover{color:#004c99;}
+
+.menu-box{
+position:fixed;top:0;right:-250px;
+width:230px;height:100vh;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(10px);
+border-left:2px solid #cce6ff;
+padding:40px 20px;transition:.4s;
+z-index:19;
+}
+.menu-box.open{right:0;}
+
+.menu-box a{
+display:block;margin:12px 0;
+padding:10px 15px;border-radius:10px;
+background:rgba(255,255,255,0.4);
+color:#003d7a;text-decoration:none;
+font-weight:600;transition:.25s;
+}
+.menu-box a:hover{
+background:#cfe8ff;
+}
+
+/* ======= HERO SECTION ======= */
+.hero{
+min-height:100vh;
+display:flex;flex-direction:column;
+justify-content:center;
+align-items:center;text-align:center;
+padding:0 10%;
+}
+
+h1{
+font-size:54px;
+background:linear-gradient(90deg,#007bff,#00a8ff);
+-webkit-background-clip:text;color:transparent;
+}
+p{
+margin-top:10px;
+font-size:18px;color:#003366;
+}
+
+/* BUTTONS */
+.buttons{
+margin-top:30px;display:flex;
+gap:16px;flex-wrap:wrap;justify-content:center;
+}
+.btn{
+padding:14px 28px;border-radius:30px;
+font-weight:600;text-decoration:none;
+color:#fff;background:#007bff;
+transition:.25s;
+}
+.btn:hover{background:#005fcc;transform:scale(1.05);}
+
+/* ======= SHORTCUTS SECTION ======= */
+.shortcuts{
+margin-top:60px;padding:60px 8%;
+background:#ffffffaa;
+border-radius:20px;
+backdrop-filter:blur(6px);
+}
+.shortcuts h2{
+font-size:30px;color:#003d7a;margin-bottom:20px;
+}
+.shortcut-buttons{
+display:flex;gap:16px;
+flex-wrap:wrap;justify-content:center;
+}
+.shortcut-buttons a{
+padding:12px 22px;border-radius:25px;
+background:#e6f2ff;border:1px solid #b3d7ff;
+color:#0059b3;text-decoration:none;
+font-weight:600;transition:.25s;
+}
+.shortcut-buttons a:hover{
+background:#b3d7ff;color:#003d7a;
+}
+
+/* ======= CONTACT FORM ======= */
+.contact{
+margin-top:80px;padding:40px 8%;
+background:#ffffffaa;border-radius:20px;
+backdrop-filter:blur(6px);
+}
+.contact h2{
+font-size:30px;color:#003d7a;
+margin-bottom:20px;
+}
+.contact input, .contact textarea{
+width:100%;padding:14px;
+margin:10px 0;border-radius:10px;
+border:1px solid #bcd9ff;font-size:16px;
+}
+.contact textarea{height:100px;resize:none;}
+
+.contact button{
+padding:14px 24px;
+border:none;border-radius:30px;
+background:#007bff;color:#fff;
+font-size:17px;font-weight:600;
+cursor:pointer;transition:.25s;
+}
+.contact button:hover{background:#005fcc;transform:scale(1.05);}
+</style>
+</head>
+
+<body>
+
+<div id="bg"></div>
+
+<!-- MENU BUTTON -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- SLIDE MENU -->
+<div class="menu-box" id="menuBox">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="games.html">Games</a>
+  <a href="how-to-play.html">How to Play</a>
+  <a href="bonuses.html">Bonuses</a>
+  <a href="payments.html">Payments</a>
+  <a href="hack.html">Hack Service</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>DMWIN</h1>
+  <p>India’s Most Reliable Gaming Platform with Instant Withdrawals</p>
+
+  <div class="buttons">
+    <a class="btn" href="https://www.dmwin15.com/#/register?invitationCode=583522131503" target="_blank">Register</a>
+    <a class="btn" href="https://t.me/dmwinpredictionguru" target="_blank">Join Telegram</a>
+  </div>
+
+  <!-- SHORTCUTS -->
+  <div class="shortcuts">
+    <h2>Explore More</h2>
+    <div class="shortcut-buttons">
+      <a href="about.html">About</a>
+      <a href="games.html">Games</a>
+      <a href="how-to-play.html">How to Play</a>
+      <a href="bonuses.html">Bonuses</a>
+      <a href="payments.html">Payments</a>
+      <a href="hack.html">Hack Service</a>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact">
+    <h2>Get In Touch</h2>
+
+    <form id="contactForm" action="https://formspree.io/f/xpqznrqq" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+
+      <div style="display:flex;gap:8px;">
+        <input type="text" value="+91" disabled
+               style="width:70px;background:#e8f2ff;text-align:center;font-weight:600;">
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number"
+               maxlength="10" required
+               oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+      </div>
+
+      <input type="email" name="email" placeholder="Email ID" required>
+      <textarea name="message" placeholder="Your Message (optional)"></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+</section>
+
+<script>
+function toggleMenu(){
+ document.getElementById("menuBox").classList.toggle("open");
+}
+</script>
+
+</body>
+  </html>
