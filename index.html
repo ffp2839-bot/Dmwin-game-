@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DMWIN – Intelligent Gaming Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{overflow-x:hidden;color:#003366;background:#eef7ff;}
+
+#bg{
+position:fixed;inset:0;z-index:-3;
+background:linear-gradient(180deg,#eef7ff,#d5ecff,#bfe2ff,#a6d8ff);
+animation:bgMove 10s infinite alternate ease-in-out;
+}
+@keyframes bgMove{
+0%{transform:scale(1);}
+100%{transform:scale(1.2) translateY(40px);}
+}
+
+.menu-btn{
+position:fixed;top:20px;right:20px;
+font-size:32px;color:#0066cc;
+cursor:pointer;z-index:30;
+}
+
+.menu-box{
+position:fixed;top:0;right:-260px;
+width:230px;height:100vh;
+background:rgba(255,255,255,0.85);
+backdrop-filter:blur(10px);
+border-left:2px solid #cce6ff;
+padding:60px 20px;
+transition:.45s ease;
+z-index:25;
+}
+.menu-box.open{right:0;}
+
+.menu-box a{
+display:block;margin:14px 0;
+padding:12px 14px;border-radius:12px;
+background:#ffffffaa;font-weight:600;
+color:#003d7a;text-decoration:none;
+opacity:0;transform:translateX(40px);
+}
+.menu-box.open a:nth-child(1){animation:fadeSlide .4s forwards .1s;}
+.menu-box.open a:nth-child(2){animation:fadeSlide .4s forwards .2s;}
+.menu-box.open a:nth-child(3){animation:fadeSlide .4s forwards .3s;}
+.menu-box.open a:nth-child(4){animation:fadeSlide .4s forwards .4s;}
+.menu-box.open a:nth-child(5){animation:fadeSlide .4s forwards .5s;}
+.menu-box.open a:nth-child(6){animation:fadeSlide .4s forwards .6s;}
+.menu-box.open a:nth-child(7){animation:fadeSlide .4s forwards .7s;}
+
+@keyframes fadeSlide{
+to{opacity:1;transform:translateX(0);}
+}
+
+.hero{
+padding:140px 10% 80px;text-align:center;
+}
+h1{
+font-size:58px;
+background:linear-gradient(90deg,#007bff,#00a8ff);
+-webkit-background-clip:text;color:transparent;
+}
+.hero p{
+margin-top:12px;font-size:20px;
+}
+
+.buttons{
+margin-top:30px;display:flex;
+gap:16px;justify-content:center;flex-wrap:wrap;
+}
+.btn{
+padding:14px 28px;background:#007bff;
+color:white;border-radius:30px;font-weight:600;
+text-decoration:none;font-size:17px;transition:.25s;
+}
+.btn:hover{background:#005fcc;transform:scale(1.06);}
+
+.shortcuts{
+margin-top:60px;padding:50px 10%;
+background:#ffffffaa;border-radius:20px;
+backdrop-filter:blur(6px);
+}
+.shortcuts h2{font-size:30px;margin-bottom:20px;}
+.shortcut-buttons{
+display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+}
+.shortcut-buttons a{
+padding:12px 22px;background:#e6f2ff;
+border:1px solid #b3d7ff;border-radius:25px;
+text-decoration:none;font-weight:600;color:#0059b3;
+}
+
+.contact{
+margin-top:80px;padding:40px 8%;
+background:#ffffffdd;border-radius:20px;
+backdrop-filter:blur(6px);
+}
+.contact h2{
+font-size:32px;text-align:center;margin-bottom:25px;
+}
+.contact input,.contact textarea{
+width:100%;padding:16px;margin:12px 0;
+font-size:18px;border-radius:12px;
+border:2px solid #d7e7ff;background:white;
+}
+.contact textarea{height:120px;}
+.contact button{
+margin-top:10px;width:100%;padding:16px;
+background:#007bff;color:#fff;font-size:20px;
+border:none;border-radius:12px;font-weight:600;
+transition:.25s;
+}
+.contact button:hover{
+background:#005fcc;transform:scale(1.03);
+}
+
+.faq{
+margin-top:70px;padding:40px 8%;
+background:#ffffffdd;border-radius:20px;
+backdrop-filter:blur(6px);
+max-width:900px;margin:auto;
+}
+.faq h2{
+font-size:34px;text-align:center;margin-bottom:25px;
+}
+.faq-item{
+margin-bottom:20px;padding:18px;
+background:#f5f9ff;border-radius:12px;
+border:1px solid #cfe1ff;
+}
+.faq-item h3{
+font-size:22px;margin-bottom:8px;color:#005bbb;
+}
+.faq-item p{
+font-size:18px;line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div id="bg"></div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="menu-box" id="menuBox">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="games.html">Games</a>
+  <a href="how-to-play.html">How to Play</a>
+  <a href="bonuses.html">Bonuses</a>
+  <a href="payments.html">Payments</a>
+  <a href="hack.html">Hack Service</a>
+</div>
+
+<section class="hero">
+  <h1>DMWIN</h1>
+  <p>India’s Most Reliable Gaming Platform with Instant Withdrawals</p>
+
+  <div class="buttons">
+    <a class="btn" href="https://www.dmwin15.com/#/register?invitationCode=583522131503" target="_blank">Register</a>
+    <a class="btn" href="https://t.me/dmwinpredictionguru" target="_blank">Join Telegram</a>
+  </div>
+
+  <div class="shortcuts">
+    <h2>Explore More</h2>
+    <div class="shortcut-buttons">
+      <a href="about.html">About</a>
+      <a href="games.html">Games</a>
+      <a href="how-to-play.html">How to Play</a>
+      <a href="bonuses.html">Bonuses</a>
+      <a href="payments.html">Payments</a>
+      <a href="hack.html">Hack Service</a>
+    </div>
+  </div>
+
+  <div class="contact">
+    <h2>Get In Touch</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>What are the benefits of Hack membership?</h3>
+      <p>
+        Hack members get 100% winning support, guaranteed profit assistance,
+        withdrawal guarantee, and personalized predictions available anytime.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How fast are withdrawals?</h3>
+      <p>Withdrawals are processed instantly in most cases.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is support available 24/7?</h3>
+      <p>Yes, our support team is active 24/7.</p>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function toggleMenu(){
+ document.getElementById("menuBox").classList.toggle("open");
+}
+</script>
+
+</body>
+      </html>
